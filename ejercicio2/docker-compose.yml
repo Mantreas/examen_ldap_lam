@@ -1,26 +1,18 @@
+version: '3.1'
+
 services:
-    db:
-        image: mariadb:10
-        volumes:
-            - data:/var/lib/mysql
-        environment:
-            - MYSQL_ROOT_PASSWORD=secret
-            - MYSQL_DATABASE=wordpress
-            - MYSQL_USER=manager
-            - MYSQL_PASSWORD=secret
-    web:
-        image: wordpress:6
-        depends_on:
-            - db
-        volumes:
-            - ./target:/var/www/html
-        environment:
-            - WORDPRESS_DB_USER=manager
-            - WORDPRESS_DB_PASSWORD=secret
-            - WORDPRESS_DB_HOST=db
-            - WORDPRESS_DB_NAME=wordpress
-        ports:
-            - 8080:80
+  vuestroapellidobd:   # Nombre del servicio cambiado a vuestro apellido
+    image: mariadb:10
+    container_name: sanchezbd   # Nombre del contenedor especificado
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=manager
+      - MYSQL_PASSWORD=secret
+    ports:
+      - 3306:3306  # Exponer puerto 3306 de MariaDB
 
 volumes:
-    data:
+  data:
